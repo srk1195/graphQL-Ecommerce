@@ -1,0 +1,17 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "description": "A graphql server for books",
+  "main": "index.js",
+  "author": "Sai Rahul Kodumuru",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "SET DEBUG=app:* & nodemon index.js"
+  },
+  "dependencies": {
+    "apollo-server": "^3.6.3",
+    "debug": "^4.3.3",
+    "graphql": "^16.3.0"
+  }
+}
