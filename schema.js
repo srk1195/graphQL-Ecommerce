@@ -8,7 +8,7 @@ exports.typeDefs = gql`
     count: Int
     price: Float
     available: Boolean
-    products: [Product!]!
+    products(filter: ProductsFilterInput): [Product!]!
     product(id: ID!): Product
     categories: [Category!]!
     category(id: ID!): Category
@@ -34,7 +34,7 @@ exports.typeDefs = gql`
   type Category {
     id: ID!
     name: String!
-    products: [Product!]!
+    products(filter: ProductsFilterInput): [Product!]!
   }
 
   # Review is of an Object Type
@@ -45,5 +45,14 @@ exports.typeDefs = gql`
     comment: String!
     rating: Int!
     productId: String!
+  }
+
+  # If we need only a set of products based on a filter, like onSale.
+  # Then, we cannot add something like products ({filter:Onsale:true})
+  # since it is not a scalar type then we need to define the schema for it.
+
+  input ProductsFilterInput {
+    onSale: Boolean
+    avgRating: Int
   }
 `;
